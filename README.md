@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# Hospital Management System
+This system is designed to help hospitals manage patients, doctors, and other critical information effectively and simply. It features a robust database backend with normalized tables and a set of core administrative and medical functionalities.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 🚀 System Features
+The system provides tailored functionalities for three main user roles:
 
-In the project directory, you can run:
+### 1. Patient Features
+* 
+**Account Registration**: Patients can register in the system to obtain a unique **Patient ID**.
+* 
+**Profile Management**: Patients can update their contact information (though they cannot modify their medical treatment records).
 
-### `npm start`
+### 2. Doctor Features
+* 
+**Secure Login**: Doctors use a **Doctor ID** to access the system.
+* 
+**Medical Record Management**: Doctors can add, modify, or view treatment records for the patients they are responsible for.
+* 
+**Patient Search**: Ability to query specific patient data and medical history.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 3. Admin Features
+* 
+**Personnel Management**: Admins can add, modify, or view information related to doctors within the hospital.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📊 Database Architecture
 
-### `npm run build`
+### Entity-Relationship Diagram (ERD)
+The system's logic is built upon the following key entities and relationships:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* 
+**Departments**: Contain multiple Doctors (**Have** relationship).
+* 
+**Doctors**: Treat Patients and generate medical Records (**Treat** relationship).
+* 
+**Patients**: Have personal records and contact details.
+* 
+**Records**: Store diagnosis, treatment details, and appointment dates.
+* 
+**Admin**: Manages the creation and maintenance of Doctor profiles (**Create** relationship).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Normalization & Integrity
+To ensure data integrity and reduce redundancy, all tables are designed to meet **3NF (Third Normal Form)** and **BCNF (Boyce-Codd Normal Form)** standards.
 
-### `npm run eject`
+| Table | Primary Key | Description |
+| --- | --- | --- |
+| `departments` | `dpt_ID` | Stores hospital department names.
+ |
+| `doctors` | `doc` | Stores doctor profiles, specialties, and credentials.
+ |
+| `patients` | `pat` | Stores patient personal data and contact info.
+ |
+| `record` | `case_ID` | Stores medical history including diagnosis and treatment.
+ |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 💻 Implementation Details
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Technology Stack
+* 
+**Database**: MySQL (InnoDB Engine).
+* 
+**Character Set**: `utf8mb4` for full Unicode support.
+* 
+**Backend Interface**: Node.js/JavaScript (using `Server.query` for DML operations).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### Core SQL Operations
+The project implements standard CRUD and advanced join/aggregation queries:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* 
+**Add Functions**: Procedures for registering new patients, doctors, and medical records .
+  
+* **Join Queries**:
+* Fetching doctors based on their specific department .
+* Retrieving comprehensive patient records by joining `record`, `doctors`, and `patients` tables .
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* 
+**Search Functionality**: A complex `LEFT JOIN` query that allows searching medical records by patient name, ID, room, or diagnosis .
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* 
+**Aggregation**: Using `COUNT(*)` to verify if a patient exists before adding a new record .
