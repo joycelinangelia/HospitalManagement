@@ -2,6 +2,7 @@
 This system is designed to help hospitals manage patients, doctors, and other critical information effectively and simply. It features a robust database backend with normalized tables and a set of core administrative and medical functionalities.
 
 
+
 ## 🚀 System Features
 The system provides tailored functionalities for three main user roles:
 
@@ -16,6 +17,7 @@ The system provides tailored functionalities for three main user roles:
 
 ### 3. Admin Features
 * **Personnel Management**: Admins can add, modify, or view information related to doctors within the hospital.
+
 
 
 
@@ -46,6 +48,7 @@ To ensure data integrity and reduce redundancy, all tables are designed to meet 
  |
 
 
+
 ## 💻 Implementation Details
 
 ### Technology Stack
@@ -63,8 +66,6 @@ The project implements standard CRUD and advanced join/aggregation queries:
 * Fetching doctors based on their specific department .
 * Retrieving comprehensive patient records by joining `record`, `doctors`, and `patients` tables .
 
-* 
-**Search Functionality**: A complex `LEFT JOIN` query that allows searching medical records by patient name, ID, room, or diagnosis .
+* **Search Functionality**: A complex `LEFT JOIN` query that allows searching medical records by patient name, ID, room, or diagnosis .
 
-* 
-**Aggregation**: Using `COUNT(*)` to verify if a patient exists before adding a new record .
+* **Aggregation**: Using `COUNT(*)` to verify if a patient exists before adding a new record .
