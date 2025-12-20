@@ -38,18 +38,27 @@ The system's logic is built upon the following key entities and relationships:
 
 To ensure data integrity and reduce redundancy, all tables are designed to meet **3NF (Third Normal Form)** and **BCNF (Boyce-Codd Normal Form)** standards.
 
+
 | Table | Primary Key | Description |
 | --- | --- | --- |
-| `departments` | `dpt_ID` | Stores hospital department names.
+| `departments` | <br>`dpt_ID` 
+
+ | Stores hospital department IDs and names.
 
  |
-| `doctors` | `doc` | Stores doctor profiles, specialties, and credentials.
+| `doctors` | <br>`doc` 
+
+ | Stores doctor profiles, contact information, and credentials.
 
  |
-| `patients` | `pat` | Stores patient personal data and contact info.
+| `patients` | <br>`pat` 
+
+ | Stores patient personal data, contact info, and login credentials.
 
  |
-| `record` | `case_ID` | Stores medical history including diagnosis and treatment.
+| `record` | <br>`case_ID` 
+
+ | Stores medical history including diagnoses, treatments, and visit dates.
 
  |
 
