@@ -38,29 +38,22 @@ The system's logic is built upon the following key entities and relationships:
 
 To ensure data integrity and reduce redundancy, all tables are designed to meet **3NF (Third Normal Form)** and **BCNF (Boyce-Codd Normal Form)** standards.
 
-
 | Table | Primary Key | Description |
 | --- | --- | --- |
-| `departments` | <br>`dpt_ID` 
-
- | Stores hospital department IDs and names.
+| `departments` | `dpt_ID` | Stores hospital department names.
 
  |
-| `doctors` | <br>`doc` 
-
- | Stores doctor profiles, contact information, and credentials.
+| `doctors` | `doc` | Stores doctor profiles, specialties, and credentials.
 
  |
-| `patients` | <br>`pat` 
-
- | Stores patient personal data, contact info, and login credentials.
+| `patients` | `pat` | Stores patient personal data and contact info.
 
  |
-| `record` | <br>`case_ID` 
-
- | Stores medical history including diagnoses, treatments, and visit dates.
+| `record` | `case_ID` | Stores medical history including diagnosis and treatment.
 
  |
+
+---
 
 
 
@@ -84,3 +77,4 @@ The project implements standard CRUD and advanced join/aggregation queries:
 * **Search Functionality**: A complex `LEFT JOIN` query that allows searching medical records by patient name, ID, room, or diagnosis .
 
 * **Aggregation**: Using `COUNT(*)` to verify if a patient exists before adding a new record .
+
