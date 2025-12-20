@@ -33,18 +33,24 @@ The system's logic is built upon the following key entities and relationships:
 * **Admin**: Manages the creation and maintenance of Doctor profiles (**Create** relationship).
 
 
+
 ### Normalization & Integrity
+
 To ensure data integrity and reduce redundancy, all tables are designed to meet **3NF (Third Normal Form)** and **BCNF (Boyce-Codd Normal Form)** standards.
 
 | Table | Primary Key | Description |
 | --- | --- | --- |
 | `departments` | `dpt_ID` | Stores hospital department names.
+
  |
 | `doctors` | `doc` | Stores doctor profiles, specialties, and credentials.
+
  |
 | `patients` | `pat` | Stores patient personal data and contact info.
+
  |
 | `record` | `case_ID` | Stores medical history including diagnosis and treatment.
+
  |
 
 
